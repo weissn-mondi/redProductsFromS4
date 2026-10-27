@@ -42,7 +42,7 @@ When processing tool results:
     description="The language model powering this agent",
 )
 def get_model_name() -> str:
-    return "sap/gpt-6-astra"
+    return "sap/anthropic--claude-4.5-sonnet"
 
 
 @agent_config(
