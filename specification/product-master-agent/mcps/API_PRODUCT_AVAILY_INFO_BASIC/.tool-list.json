@@ -1,0 +1,294 @@
+[
+  {
+    "name": "get_metadata_api_product_availy_info_basic",
+    "title": "get_metadata_api_product_availy_info_basic",
+    "description": "Get metadata of the OData service with optional filtering to reduce token consumption.\nReturns the metadata in XML format, which can be used to discover available entities and their properties.\nCall this endpoint every time before you call other tools to ensure understanding of the schema.\nBased on the metadata, you can dynamically create an OData request.\n\nUse filtering parameters to get specific metadata sections. Without parameters, this tool returns the complete XML metadata (which might be huge).\nOnly use the specified enum values for the filtering parameters.\n",
+    "odataType": {
+      "metadataRequest": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "etag"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "batch_for_api_product_availy_info_basic",
+    "title": "batch_for_api_product_availy_info_basic",
+    "description": "Execute multiple OData operations in a single batch request using the $batch endpoint. This allows you to combine multiple tool calls into one HTTP request, improving efficiency when performing multiple operations.",
+    "odataType": {
+      "batchRequest": {},
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "function_determineavailat_for_api_product_availy_info_basic",
+    "title": "function_DetermineAvailAt_for_api_product_availy_info_basic",
+    "description": "OData function: DetermineAvailAt in the api_product_availy_info_basic service. Returns: API_PRODUCT_AVAILY_INFO_BASIC.AvailabilityRecord",
+    "odataType": {
+      "operation": {
+        "name": "DetermineAvailAt",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "SupplyingPlant",
+            "newParameterName": "supplyingplant"
+          },
+          {
+            "name": "Material",
+            "newParameterName": "material"
+          },
+          {
+            "name": "ATPCheckingRule",
+            "newParameterName": "atpcheckingrule"
+          },
+          {
+            "name": "RequestedUTCDateTime",
+            "newParameterName": "requestedutcdatetime"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "function_determineavailof_for_api_product_availy_info_basic",
+    "title": "function_DetermineAvailOf_for_api_product_availy_info_basic",
+    "description": "OData function: DetermineAvailOf in the api_product_availy_info_basic service. Returns: API_PRODUCT_AVAILY_INFO_BASIC.AvailabilityRecord",
+    "odataType": {
+      "operation": {
+        "name": "DetermineAvailOf",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "RequestedQuantityInBaseUnit",
+            "newParameterName": "requestedquantityinbaseunit"
+          },
+          {
+            "name": "Material",
+            "newParameterName": "material"
+          },
+          {
+            "name": "SupplyingPlant",
+            "newParameterName": "supplyingplant"
+          },
+          {
+            "name": "ATPCheckingRule",
+            "newParameterName": "atpcheckingrule"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  },
+  {
+    "name": "function_calcavailtimeseries_for_api_product_availy_info_basic",
+    "title": "function_CalcAvailTimeseries_for_api_product_availy_info_basic",
+    "description": "OData function: CalcAvailTimeseries in the api_product_availy_info_basic service. Returns: Collection(API_PRODUCT_AVAILY_INFO_BASIC.AvailabilityRecord)",
+    "odataType": {
+      "operation": {
+        "name": "CalcAvailTimeseries",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "ATPCheckingRule",
+            "newParameterName": "atpcheckingrule"
+          },
+          {
+            "name": "Material",
+            "newParameterName": "material"
+          },
+          {
+            "name": "SupplyingPlant",
+            "newParameterName": "supplyingplant"
+          }
+        ]
+      },
+      "responseHeaders": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "cache-control"
+        },
+        {
+          "name": "expires"
+        },
+        {
+          "name": "last-modified"
+        },
+        {
+          "name": "x-request-id"
+        },
+        {
+          "name": "x-correlation-id"
+        },
+        {
+          "name": "content-type"
+        },
+        {
+          "name": "content-encoding"
+        },
+        {
+          "name": "content-language"
+        },
+        {
+          "name": "content-length"
+        },
+        {
+          "name": "dataserviceversion"
+        },
+        {
+          "name": "sap-message"
+        }
+      ]
+    }
+  }
+]

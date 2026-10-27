@@ -1,0 +1,498 @@
+{
+  "servers": {
+    "sap-s4-api-product-srv-mcp-server": {
+      "mcp_server_name": "sap.s4/API_PRODUCT_SRV",
+      "description": "SAP S/4HANA Product Master (A2X) OData API — product descriptions, categories, and units of measure.",
+      "tools": {
+        "get_metadata_api_product_srv": {
+          "description": "Get metadata of the OData service with optional filtering.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "entitySetName": { "type": "string", "description": "Optional entity set name to filter metadata" }
+            },
+            "required": []
+          },
+          "mock_response": "<?xml version=\"1.0\" encoding=\"utf-8\"?><edmx:Edmx Version=\"1.0\"><edmx:DataServices><Schema Namespace=\"API_PRODUCT_SRV\"><EntityType Name=\"A_Product\"><Key><PropertyRef Name=\"Product\"/></Key><Property Name=\"Product\" Type=\"Edm.String\" MaxLength=\"40\"/><Property Name=\"ProductType\" Type=\"Edm.String\"/><Property Name=\"ProductGroup\" Type=\"Edm.String\"/><Property Name=\"BaseUnit\" Type=\"Edm.String\" MaxLength=\"3\"/></EntityType></Schema></edmx:DataServices></edmx:Edmx>"
+        },
+        "batch_for_api_product_srv": {
+          "description": "Execute multiple OData operations in a single batch request.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "requests": { "type": "array", "description": "Array of batch requests" }
+            },
+            "required": ["requests"]
+          },
+          "mock_response": {
+            "responses": []
+          }
+        },
+        "list_a_product_for_api_product_srv": {
+          "description": "Retrieve a list of entities from the A_Product collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": { "type": "string", "description": "OData filter expression" },
+              "$select": { "type": "string", "description": "Comma-separated list of fields to return" },
+              "$orderby": { "type": "string", "description": "Sort order" },
+              "$top": { "type": "integer", "description": "Maximum number of results" },
+              "$skip": { "type": "integer", "description": "Number of results to skip" },
+              "$expand": { "type": "string", "description": "Related entities to expand" },
+              "$inlinecount": { "type": "string", "description": "Include total count" }
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "Product": "TG-1050",
+                "ProductType": "FERT",
+                "CrossPlantStatus": "10",
+                "IsMarkedForDeletion": false,
+                "ProductGroup": "ME-INSTRU",
+                "BaseUnit": "EA",
+                "ItemCategoryGroup": "NORM",
+                "ProductHierarchy": "00000010000000100001",
+                "Division": "10",
+                "IndustrySector": "M"
+              },
+              {
+                "Product": "ABC-200",
+                "ProductType": "HALB",
+                "CrossPlantStatus": "10",
+                "IsMarkedForDeletion": false,
+                "ProductGroup": "ME-COMP",
+                "BaseUnit": "KG",
+                "ItemCategoryGroup": "NORM",
+                "ProductHierarchy": "00000010000000200001",
+                "Division": "10",
+                "IndustrySector": "M"
+              }
+            ]
+          }
+        },
+        "get_a_product_for_api_product_srv": {
+          "description": "Retrieve a single entity by its key from the A_Product collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "product": { "type": "string", "description": "Product ID (key field)" },
+              "$select": { "type": "string", "description": "Fields to return" },
+              "$expand": { "type": "string", "description": "Related entities to expand" }
+            },
+            "required": ["product"]
+          },
+          "mock_response": {
+            "Product": "TG-1050",
+            "ProductType": "FERT",
+            "CrossPlantStatus": "10",
+            "IsMarkedForDeletion": false,
+            "ProductGroup": "ME-INSTRU",
+            "BaseUnit": "EA",
+            "ItemCategoryGroup": "NORM",
+            "ProductHierarchy": "00000010000000100001",
+            "Division": "10",
+            "IndustrySector": "M",
+            "GrossWeight": "0.500",
+            "WeightUnit": "KG",
+            "NetWeight": "0.450"
+          }
+        },
+        "count_a_product_for_api_product_srv": {
+          "description": "Get the total count of entities in the A_Product collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": { "type": "string", "description": "OData filter expression" }
+            },
+            "required": []
+          },
+          "mock_response": 142
+        },
+        "list_a_productdescription_for_api_product_srv": {
+          "description": "Retrieve a list of entities from the A_ProductDescription collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": { "type": "string", "description": "OData filter expression" },
+              "$select": { "type": "string", "description": "Fields to return" },
+              "$top": { "type": "integer", "description": "Maximum number of results" },
+              "$skip": { "type": "integer", "description": "Number to skip" },
+              "$expand": { "type": "string", "description": "Related entities" }
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "Product": "TG-1050",
+                "Language": "EN",
+                "ProductDescription": "Industrial Pressure Gauge 0-100 bar"
+              },
+              {
+                "Product": "ABC-200",
+                "Language": "EN",
+                "ProductDescription": "Precision Valve Assembly Component"
+              }
+            ]
+          }
+        },
+        "get_a_productdescription_for_api_product_srv": {
+          "description": "Retrieve a single product description entity by its key.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "product": { "type": "string", "description": "Product ID" },
+              "language": { "type": "string", "description": "Language key (e.g. EN)" },
+              "$select": { "type": "string", "description": "Fields to return" }
+            },
+            "required": ["product", "language"]
+          },
+          "mock_response": {
+            "Product": "TG-1050",
+            "Language": "EN",
+            "ProductDescription": "Industrial Pressure Gauge 0-100 bar"
+          }
+        },
+        "count_a_productdescription_for_api_product_srv": {
+          "description": "Get the total count of entities in the A_ProductDescription collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": { "type": "string", "description": "OData filter expression" }
+            },
+            "required": []
+          },
+          "mock_response": 142
+        },
+        "list_a_productplant_for_api_product_srv": {
+          "description": "Retrieve a list of entities from the A_ProductPlant collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": { "type": "string", "description": "OData filter expression" },
+              "$select": { "type": "string", "description": "Fields to return" },
+              "$top": { "type": "integer", "description": "Maximum number of results" }
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "Product": "TG-1050",
+                "Plant": "1000",
+                "BaseUnit": "EA",
+                "IsMarkedForDeletion": false,
+                "MRPType": "PD",
+                "ProcurementType": "F"
+              }
+            ]
+          }
+        },
+        "get_a_productplant_for_api_product_srv": {
+          "description": "Retrieve a single entity by its key from the A_ProductPlant collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "product": { "type": "string", "description": "Product ID" },
+              "plant": { "type": "string", "description": "Plant code" },
+              "$select": { "type": "string", "description": "Fields to return" }
+            },
+            "required": ["product", "plant"]
+          },
+          "mock_response": {
+            "Product": "TG-1050",
+            "Plant": "1000",
+            "BaseUnit": "EA",
+            "IsMarkedForDeletion": false,
+            "MRPType": "PD",
+            "ProcurementType": "F",
+            "ABCIndicator": "A"
+          }
+        },
+        "count_a_productplant_for_api_product_srv": {
+          "description": "Get the total count of entities in the A_ProductPlant collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": { "type": "string", "description": "OData filter expression" }
+            },
+            "required": []
+          },
+          "mock_response": 86
+        }
+      }
+    },
+    "sap-s4-api-clfn-product-srv-mcp-server": {
+      "mcp_server_name": "sap.s4/API_CLFN_PRODUCT_SRV",
+      "description": "SAP S/4HANA Product Master Data Including Classification OData API — product classifications and characteristics.",
+      "tools": {
+        "get_metadata_api_clfn_product_srv": {
+          "description": "Get metadata of the OData service.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "entitySetName": { "type": "string", "description": "Optional entity set name to filter metadata" }
+            },
+            "required": []
+          },
+          "mock_response": "<?xml version=\"1.0\" encoding=\"utf-8\"?><edmx:Edmx Version=\"1.0\"><edmx:DataServices><Schema Namespace=\"API_CLFN_PRODUCT_SRV\"><EntityType Name=\"A_ClfnProduct\"><Key><PropertyRef Name=\"Product\"/><PropertyRef Name=\"ClassType\"/><PropertyRef Name=\"Class\"/></Key></EntityType></Schema></edmx:DataServices></edmx:Edmx>"
+        },
+        "batch_for_api_clfn_product_srv": {
+          "description": "Execute multiple OData operations in a single batch request.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "requests": { "type": "array", "description": "Array of batch requests" }
+            },
+            "required": ["requests"]
+          },
+          "mock_response": {
+            "responses": []
+          }
+        },
+        "list_a_clfnproduct_for_api_clfn_product_srv": {
+          "description": "Retrieve a list of entities from the A_ClfnProduct collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": { "type": "string", "description": "OData filter expression" },
+              "$select": { "type": "string", "description": "Fields to return" },
+              "$top": { "type": "integer", "description": "Maximum number of results" }
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "Product": "TG-1050",
+                "ClassType": "001",
+                "Class": "PRESSURE_INSTRUMENTS",
+                "ClassTypeDescription": "Material Class",
+                "ClassDescription": "Pressure Measurement Instruments"
+              }
+            ]
+          }
+        },
+        "get_a_clfnproduct_for_api_clfn_product_srv": {
+          "description": "Retrieve a single entity by its key from the A_ClfnProduct collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "product": { "type": "string", "description": "Product ID" },
+              "classtype": { "type": "string", "description": "Class type" },
+              "class": { "type": "string", "description": "Class name" },
+              "$select": { "type": "string", "description": "Fields to return" }
+            },
+            "required": ["product", "classtype", "class"]
+          },
+          "mock_response": {
+            "Product": "TG-1050",
+            "ClassType": "001",
+            "Class": "PRESSURE_INSTRUMENTS",
+            "ClassTypeDescription": "Material Class",
+            "ClassDescription": "Pressure Measurement Instruments"
+          }
+        },
+        "count_a_clfnproduct_for_api_clfn_product_srv": {
+          "description": "Get the total count of entities in the A_ClfnProduct collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": { "type": "string", "description": "OData filter expression" }
+            },
+            "required": []
+          },
+          "mock_response": 38
+        },
+        "list_a_productclasscharc_for_api_clfn_product_srv": {
+          "description": "Retrieve a list of entities from the A_ProductClassCharc collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": { "type": "string", "description": "OData filter expression" },
+              "$select": { "type": "string", "description": "Fields to return" },
+              "$top": { "type": "integer", "description": "Maximum number of results" }
+            },
+            "required": []
+          },
+          "mock_response": {
+            "results": [
+              {
+                "Product": "TG-1050",
+                "ClassType": "001",
+                "Class": "PRESSURE_INSTRUMENTS",
+                "CharcInternalID": "0000000001",
+                "Characteristic": "PRESSURE_RANGE",
+                "CharacteristicValue": "0-100 bar",
+                "CharacteristicDescription": "Pressure Range"
+              },
+              {
+                "Product": "TG-1050",
+                "ClassType": "001",
+                "Class": "PRESSURE_INSTRUMENTS",
+                "CharcInternalID": "0000000002",
+                "Characteristic": "MATERIAL_TYPE",
+                "CharacteristicValue": "Stainless Steel",
+                "CharacteristicDescription": "Housing Material"
+              }
+            ]
+          }
+        },
+        "get_a_productclasscharc_for_api_clfn_product_srv": {
+          "description": "Retrieve a single entity by its key from the A_ProductClassCharc collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "product": { "type": "string", "description": "Product ID" },
+              "classtype": { "type": "string", "description": "Class type" },
+              "class": { "type": "string", "description": "Class name" },
+              "charcinternalid": { "type": "string", "description": "Characteristic internal ID" },
+              "$select": { "type": "string", "description": "Fields to return" }
+            },
+            "required": ["product", "classtype", "class", "charcinternalid"]
+          },
+          "mock_response": {
+            "Product": "TG-1050",
+            "ClassType": "001",
+            "Class": "PRESSURE_INSTRUMENTS",
+            "CharcInternalID": "0000000001",
+            "Characteristic": "PRESSURE_RANGE",
+            "CharacteristicValue": "0-100 bar",
+            "CharacteristicDescription": "Pressure Range"
+          }
+        },
+        "count_a_productclasscharc_for_api_clfn_product_srv": {
+          "description": "Get the total count of entities in the A_ProductClassCharc collection.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "$filter": { "type": "string", "description": "OData filter expression" }
+            },
+            "required": []
+          },
+          "mock_response": 76
+        }
+      }
+    },
+    "sap-s4-api-product-availy-info-basic-mcp-server": {
+      "mcp_server_name": "sap.s4/API_PRODUCT_AVAILY_INFO_BASIC",
+      "description": "SAP S/4HANA Basic Product Availability Info OData API — product availability status.",
+      "tools": {
+        "get_metadata_api_product_availy_info_basic": {
+          "description": "Get metadata of the OData service.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "entitySetName": { "type": "string", "description": "Optional entity set name to filter metadata" }
+            },
+            "required": []
+          },
+          "mock_response": "<?xml version=\"1.0\" encoding=\"utf-8\"?><edmx:Edmx Version=\"1.0\"><edmx:DataServices><Schema Namespace=\"API_PRODUCT_AVAILY_INFO_BASIC\"></Schema></edmx:DataServices></edmx:Edmx>"
+        },
+        "batch_for_api_product_availy_info_basic": {
+          "description": "Execute multiple OData operations in a single batch request.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "requests": { "type": "array", "description": "Array of batch requests" }
+            },
+            "required": ["requests"]
+          },
+          "mock_response": {
+            "responses": []
+          }
+        },
+        "function_determineavailat_for_api_product_availy_info_basic": {
+          "description": "Determine product availability at a specific date and time for a given plant.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "SupplyingPlant": { "type": "string", "description": "Plant code (4 chars)" },
+              "Material": { "type": "string", "description": "Product / Material number (max 40 chars)" },
+              "ATPCheckingRule": { "type": "string", "description": "ATP checking rule (2 chars)" },
+              "RequestedUTCDateTime": { "type": "string", "description": "Requested availability date/time (ISO 8601)" }
+            },
+            "required": ["SupplyingPlant", "Material", "ATPCheckingRule", "RequestedUTCDateTime"]
+          },
+          "mock_response": {
+            "PeriodStartUTCDateTime": "/Date(1761523200000)/",
+            "PeriodStartTimeZone": "UTC",
+            "PeriodEndUTCDateTime": "/Date(1761609600000)/",
+            "PeriodEndTimeZone": "UTC",
+            "AvailableQuantityInBaseUnit": "250.000",
+            "BaseUnit": "EA"
+          }
+        },
+        "function_determineavailof_for_api_product_availy_info_basic": {
+          "description": "Determine if a requested quantity of a product is available at a given plant.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "RequestedQuantityInBaseUnit": { "type": "string", "description": "Requested quantity in base unit" },
+              "Material": { "type": "string", "description": "Product / Material number (max 40 chars)" },
+              "SupplyingPlant": { "type": "string", "description": "Plant code (4 chars)" },
+              "ATPCheckingRule": { "type": "string", "description": "ATP checking rule (2 chars)" }
+            },
+            "required": ["RequestedQuantityInBaseUnit", "Material", "SupplyingPlant", "ATPCheckingRule"]
+          },
+          "mock_response": {
+            "PeriodStartUTCDateTime": "/Date(1761523200000)/",
+            "PeriodStartTimeZone": "UTC",
+            "PeriodEndUTCDateTime": "/Date(1761609600000)/",
+            "PeriodEndTimeZone": "UTC",
+            "AvailableQuantityInBaseUnit": "250.000",
+            "BaseUnit": "EA"
+          }
+        },
+        "function_calcavailtimeseries_for_api_product_availy_info_basic": {
+          "description": "Calculate availability timeseries for a product at a given plant.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "ATPCheckingRule": { "type": "string", "description": "ATP checking rule (2 chars)" },
+              "Material": { "type": "string", "description": "Product / Material number" },
+              "SupplyingPlant": { "type": "string", "description": "Plant code (4 chars)" }
+            },
+            "required": ["ATPCheckingRule", "Material", "SupplyingPlant"]
+          },
+          "mock_response": {
+            "results": [
+              {
+                "PeriodStartUTCDateTime": "/Date(1761523200000)/",
+                "PeriodStartTimeZone": "UTC",
+                "PeriodEndUTCDateTime": "/Date(1761609600000)/",
+                "PeriodEndTimeZone": "UTC",
+                "AvailableQuantityInBaseUnit": "250.000",
+                "BaseUnit": "EA"
+              },
+              {
+                "PeriodStartUTCDateTime": "/Date(1761609600000)/",
+                "PeriodStartTimeZone": "UTC",
+                "PeriodEndUTCDateTime": "/Date(1761696000000)/",
+                "PeriodEndTimeZone": "UTC",
+                "AvailableQuantityInBaseUnit": "180.000",
+                "BaseUnit": "EA"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "created_for_agent": "product-master-agent",
+    "mock_mode": true,
+    "deterministic": true,
+    "total_servers": 3,
+    "total_tools": 24,
+    "generated_from": [
+      "assets/sap-s4-api-product-srv-mcp-server/mcp-translation/translation.json",
+      "assets/sap-s4-api-clfn-product-srv-mcp-server/mcp-translation/translation.json",
+      "assets/sap-s4-api-product-availy-info-basic-mcp-server/mcp-translation/translation.json"
+    ],
+    "generation_date": "2026-10-27"
+  }
+}

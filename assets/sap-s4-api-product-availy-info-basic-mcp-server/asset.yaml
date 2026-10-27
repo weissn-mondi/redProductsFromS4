@@ -1,0 +1,21 @@
+apiVersion: asset.sap/v1
+kind: Asset
+type: mcp-server
+
+metadata:
+  name: sap-s4-api-product-availy-info-basic-mcp-server
+  description: Exposes SAP S/4HANA Basic Product Availability Info OData API as MCP tools for checking product availability status.
+  version: "1.0.0"
+  translation: mcp-translation/translation.json
+  apiSpec: mcp-translation/api-spec.edmx
+
+requires:
+  - name: API_PRODUCT_AVAILY_INFO_BASIC
+    kind: api
+    ordId: sap.s4:apiResource:API_PRODUCT_AVAILY_INFO_BASIC:v1
+
+provides:
+  apis:
+    - name: sap-s4-api-product-availy-info-basic-mcp-server
+      kind: mcp-server
+      ordId: customer.build:apiResource:product-master-data-agent-54955.sap-s4-api-product-availy-info-basic-mcp-server:v1
